@@ -12,7 +12,6 @@ var gulp = require('gulp'),
 var useref = require('gulp-useref'),
 		gulpif = require('gulp-if'),
 		cssmin = require('gulp-clean-css'),
-		uglify = require('gulp-uglify'),
 		rimraf = require('rimraf'),
 		notify = require('gulp-notify'),
 		ftp = require('vinyl-ftp'),
@@ -93,7 +92,6 @@ gulp.task('clean', function(cb) {
 gulp.task('build', ['clean'], function () {
 	return gulp.src(paths.devDir + '*.html')
 		.pipe( useref() )
-		.pipe( gulpif('*.js', uglify()) )
 		.pipe( gulpif('*.css', cssmin()) )
 		.pipe( gulp.dest(paths.outputDir) );
 });
