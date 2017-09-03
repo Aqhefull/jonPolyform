@@ -135,8 +135,9 @@
             }
         }
 
-        function mu() {
+        function mu(event) {
             isDown = false;
+            event.target.style.opacity = "1";
         }
 
         function mm(event) {
@@ -146,6 +147,7 @@
                     console.log(event.currentTarget)
                     event.target.style.transitionProperty = "none";
                     event.target.style.transitionDuration = "0s";
+                    event.target.style.opacity = "0.5";
                     draggedPosition()
                     draggedBorder(playgroundWidth, playgroundHeight)
                 }
