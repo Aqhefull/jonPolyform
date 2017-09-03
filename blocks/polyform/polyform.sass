@@ -1,0 +1,72 @@
+.polyform
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
+  &__container
+    +container()
+    flex-direction: column
+  &__mainbar
+    height: 50px
+    background-color: $darkgray
+    display: flex
+    justify-content: flex-end
+    align-items: center
+  &__toolbar
+    height: 50px
+    background-color: $blue
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    &__item
+      cursor: pointer
+      padding: 0 30px
+      height: 100%
+      display: flex
+      justify-content: center
+      align-items: center
+      border-right: 2px solid $darkgray
+      transition: all 0.3s
+      &:hover
+        background-color: $darkblue
+      span
+        font-size: 26px
+      &--active
+        background-color: $gray
+        &:hover
+          background-color: $gray
+  &__content
+    display: flex
+    justify-content: space-between
+    align-items: stretch
+#polyform
+  &_objects
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+    flex-wrap: wrap
+    box-sizing: border-box
+    min-height: 200px
+    background-color: $darkgray
+    width: 40%
+    img
+      width: calc(100% - ( 50% + 100px ) )
+      padding: 50px
+      height: auto
+      cursor: pointer
+      display: block
+  &_operations
+    border: 15px solid $darkgray
+    width: 100%
+    min-height: 500px
+    background-color: $lightblue
+    box-sizing: border-box
+    position: relative
+    img
+      width: 10%
+      height: auto
+      cursor: pointer
+      display: block
+#safeplace
+  position: absolute
+  z-index: -1

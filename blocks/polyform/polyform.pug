@@ -1,0 +1,22 @@
+mixin polyform()
+  +b.SECTION.polyform
+    +e.DIV.container
+      +e.DIV.mainbar
+          button Buy Order
+      +e.DIV.toolbar
+        +e.DIV.toolbar__item#move
+          span(class="mdi mdi-cursor-move")
+        +e.DIV.toolbar__item#rotate
+          span(class="mdi mdi-rotate-left")
+        +e.DIV.toolbar__item#cursor
+          span(class="mdi mdi-cursor-default-outline")
+        +e.DIV.toolbar__item
+          span(class="mdi mdi-source-commit")
+      +e.DIV.content
+        +b.DIV#polyform_objects
+          img(src="./img/1.png") 
+          img(src="./img/2.png")
+          img(src="./img/3.png")
+          img(src="./img/4.png")
+          +b.DIV#safeplace
+        +b.DIV#polyform_operations

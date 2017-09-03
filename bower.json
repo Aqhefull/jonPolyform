@@ -1,0 +1,21 @@
+{
+  "name": "gulp_VetDop",
+  "description": "gulp_pug_sass_bem_VetDop",
+  "main": "index.js",
+  "authors": [
+    "Alexandr Ponomarenko <a.ponomarenko@interact.agency>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "mdi": "^1.9.33",
+    "animate.css": "^3.5.2",
+    "jquery-ui": "^1.12.1",
+    "wow": "wowjs#^1.1.2"
+  }
+}

@@ -1,0 +1,31 @@
+include _assets/bemto/bemto
+- set_bemto_settings({ modifier: "--" })
+
+include head/head
+include polyform/polyform
+
+doctype html
+html(lang="ru")
+	
+	block head
+		head
+			+head({
+				"title": "jonPolyform",
+				"author": "Alexandr Komarevich",
+				"description": "StageBuilder Polyform"
+			})
+			
+		+b.BODY.page
+			+e.DIV.wrap
+				block content
+					div content
+				
+			block vendors
+				// build:js js/vendor.js
+				script( src="libs/jquery/dist/jquery.min.js")
+				script( src="libs/wow/dist/wow.min.js")
+				// endbuild
+			block scripts
+				// build:js js/main.js
+				script( src="js/main.js")
+				// endbuild
