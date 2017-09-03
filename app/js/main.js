@@ -7,33 +7,6 @@
     const initRotBtn = document.getElementById('rotate');
     const initMovBtn = document.getElementById('move');
 
-    function draggedPosition() {
-        dragged.style.left = (event.pageX - polyformOper.offsetLeft) - 15 - dragged.offsetWidth / 2 + 'px';
-        dragged.style.top = (event.pageY - polyformOper.offsetTop) - 15 - dragged.offsetHeight / 2 + 'px';
-    }
-
-    function draggedBorder(w, h) {
-        if (parseInt(dragged.style.top) < 0) {
-            dragged.style.top = 0 + 'px';
-            dragged.onmousemove = null;
-            dragged.onmouseup = null;
-        }
-        if (parseInt(dragged.style.left) < 0) {
-            dragged.style.left = 0 + 'px';
-            dragged.onmousemove = null;
-            dragged.onmouseup = null;
-        }
-        if (parseInt(dragged.style.top) > (parseInt(h) - parseInt(dragged.offsetHeight) - 30)) {
-            dragged.style.top = parseInt(h) - parseInt(dragged.offsetHeight) - 30 + 'px';
-            dragged.onmousemove = null;
-            dragged.onmouseup = null;
-        }
-        if (parseInt(dragged.style.left) > (parseInt(w) - parseInt(dragged.offsetWidth) - 30)) {
-            dragged.style.left = parseInt(w) - parseInt(dragged.offsetWidth) - 30 + 'px';
-            dragged.onmousemove = null;
-            dragged.onmouseup = null;
-        }
-    }
     const img = document.getElementById('polyform_objects').getElementsByTagName('img');
     for (let i = 0; i < img.length; i++) {
         img[i].setAttribute("draggable", "true")
@@ -82,7 +55,28 @@
         }
 
     }, false);
-
+    function draggedBorder(w, h) {
+        if (parseInt(dragged.style.top) < 0) {
+            dragged.style.top = 0 + 'px';
+            dragged.onmousemove = null;
+            dragged.onmouseup = null;
+        }
+        if (parseInt(dragged.style.left) < 0) {
+            dragged.style.left = 0 + 'px';
+            dragged.onmousemove = null;
+            dragged.onmouseup = null;
+        }
+        if (parseInt(dragged.style.top) > (parseInt(h) - parseInt(dragged.offsetHeight) - 30)) {
+            dragged.style.top = parseInt(h) - parseInt(dragged.offsetHeight) - 30 + 'px';
+            dragged.onmousemove = null;
+            dragged.onmouseup = null;
+        }
+        if (parseInt(dragged.style.left) > (parseInt(w) - parseInt(dragged.offsetWidth) - 30)) {
+            dragged.style.left = parseInt(w) - parseInt(dragged.offsetWidth) - 30 + 'px';
+            dragged.onmousemove = null;
+            dragged.onmouseup = null;
+        }
+    }
     document.addEventListener("drop", function (event) {
         if (event.target.id != "polyform_operations") {
             return;
@@ -91,7 +85,8 @@
             dragged.setAttribute("draggable", "false")
             event.preventDefault();
             dragged.style.position = 'absolute';
-            draggedPosition()
+            dragged.style.left = (event.pageX - polyformOper.offsetLeft) - 15 - dragged.offsetWidth / 2 + 'px';
+            dragged.style.top = (event.pageY - polyformOper.offsetTop) - 15 - dragged.offsetHeight / 2 + 'px';
             draggedBorder(playgroundWidth, playgroundHeight)
             event.target.appendChild(dragged);
         }
@@ -144,12 +139,31 @@
             event.preventDefault();
             if (isDown) {
                 if (event.target.parentNode.id == 'polyform_operations') {
-                    console.log(event.currentTarget)
                     event.target.style.transitionProperty = "none";
                     event.target.style.transitionDuration = "0s";
                     event.target.style.opacity = "0.5";
-                    draggedPosition()
-                    draggedBorder(playgroundWidth, playgroundHeight)
+                    event.target.style.left = (event.pageX - polyformOper.offsetLeft) - 15 - event.target.offsetWidth / 2 + 'px';
+                    event.target.style.top = (event.pageY - polyformOper.offsetTop) - 15 - event.target.offsetHeight / 2 + 'px';
+                    if (parseInt(event.target.style.top) < 0) {
+                        event.target.style.top = 0 + 'px';
+                        event.target.onmousemove = null;
+                        event.target.onmouseup = null;
+                    }
+                    if (parseInt(event.target.style.left) < 0) {
+                        event.target.style.left = 0 + 'px';
+                        event.target.onmousemove = null;
+                        event.target.onmouseup = null;
+                    }
+                    if (parseInt(event.target.style.top) > (parseInt(playgroundHeight) - parseInt(event.target.offsetHeight) - 30)) {
+                        event.target.style.top = parseInt(playgroundHeight) - parseInt(event.target.offsetHeight) - 30 + 'px';
+                        event.target.onmousemove = null;
+                        event.target.onmouseup = null;
+                    }
+                    if (parseInt(event.target.style.left) > (parseInt(playgroundWidth) - parseInt(event.target.offsetWidth) - 30)) {
+                        event.target.style.left = parseInt(playgroundWidth) - parseInt(event.target.offsetWidth) - 30 + 'px';
+                        event.target.onmousemove = null;
+                        event.target.onmouseup = null;
+                    }
                 }
             }
         }
